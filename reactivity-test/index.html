@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Seer.js Reactivity Prototype</title>
+</head>
+
+<body>
+
+  Select your side:
+  <select onchange="updateText('side', event)">
+      <option value="---">---</option>
+      <option value="Good">Good</option>
+      <option value="Evil">Evil</option>
+      <option value="Noop">noop</option>
+    </select>
+
+  <fieldset>
+    The good one:
+    <p s-text="goodCharacter"></p>
+    <input type="text" s-model="goodCharacter" oninput="updateText('goodCharacter', event)" />
+  </fieldset>
+  <fieldset>
+    The evil one:
+    <p s-text="evilCharacter"></p>
+    <input type="text" s-model="evilCharacter" oninput="updateText('evilCharacter', event)" />
+  </fieldset>
+
+  <h3>Your character:</h3>
+  <p s-text="selectedCharacter"></p>
+  <label>Sentence length:</label>
+  <strong s-text="selectedCharacterSentenceLength"></strong>
+
+  <!-- <button type="button" onclick="logProperty('fullName')">Log FullName</button>
+    <button type="button" onclick="logProperty('fullNameLength')">Log FullNameLength</button> -->
+
+  <!-- <h1>Age: <span s-text="age"></span></h1> -->
+  <!-- <input type="text" oninput="updateText('age', event)"/> -->
+  <!-- <span style="color: red" s-text="ageError"></span> -->
+
+
+  <!-- <h2>Products in cart: <span s-text="items"></span></h2> -->
+  <!-- <button type="button" onclick="addToCart()">Product 1</button> -->
+
+
+  <script src="index.js" charset="utf-8"></script>
+</body>
+
+</html>

@@ -1,35 +1,50 @@
-function search(needle, haystack) {
-  for (let property in haystack) {
-    if (haystack.hasOwnProperty(property)) {
-      if (
-        haystack[property] === needle &&
-        typeof haystack[property] !== 'object'
-      ) {
-        return true;
-      } else if (typeof haystack[property] === 'object') {
-        let result = search(needle, haystack[property]);
-        if (result) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }
+// function search(needle, haystack) {
+//   for (let property in haystack) {
+//     if (haystack.hasOwnProperty(property)) {
+//       if (
+//         haystack[property] === needle &&
+//         typeof haystack[property] !== 'object'
+//       ) {
+//         return true;
+//       } else if (typeof haystack[property] === 'object') {
+//         let result = search(needle, haystack[property]);
+//         if (result) {
+//           return true;
+//         } else {
+//           return false;
+//         }
+//       }
+//     }
+//   }
+//   return false;
+// }
+
+// console.log(search(5, { a: 3, b: 5, c: 9 })); // true
+
+// console.log(search('5', { a: 3, b: 5, c: 9 })); // false
+
+// console.log(search(5, { a: 3, b: { u: 8, '5': 'c', s: 5 }, c: 9 })); // true
+
+// console.log(search(5, { a: 3, b: { u: 8, '5': 'c', s: 7 }, c: 9 })); // false
+
+// console.log(search(5, { a: [1, 2, 3, 5, 7, 9], c: 8, s: 6 })); // true
+
+// console.log(search(5, { a: [1, 2, { s: 4, c: { u: 5 } }], s: 9 })); // true
+
+//Проверка на обьект
+//typeof a[x] = 'object';
+//Юзать Object.keys OBject.values
+//typeof null это object
+//юзать every
+//Правильная a[x] !== null && typeof a[x] === 'object'
+//Нужно перебирать Object.keys()
+//использовать for ... of для перебора всех итерируемых сущностей
+
+Object.keys(a).forEach(key => {
+  if (Array.isArray(a[key])) {
+    //for .. of ...
   }
-  return false;
-}
-
-console.log(search(5, { a: 3, b: 5, c: 9 })); // true
-
-console.log(search('5', { a: 3, b: 5, c: 9 })); // false
-
-console.log(search(5, { a: 3, b: { u: 8, '5': 'c', s: 5 }, c: 9 })); // true
-
-console.log(search(5, { a: 3, b: { u: 8, '5': 'c', s: 7 }, c: 9 })); // false
-
-console.log(search(5, { a: [1, 2, 3, 5, 7, 9], c: 8, s: 6 })); // true
-
-console.log(search(5, { a: [1, 2, { s: 4, c: { u: 5 } }], s: 9 })); // true
+});
 
 function equals(obj1, obj2) {
   var keys1 = Object.keys(obj1).sort();
@@ -119,29 +134,29 @@ console.log(
 //true
 //false
 
-function copy(obj) {
-  let newObj = {};
-  for (let property in obj) {
-    if (obj.hasOwnProperty(property)) {
-      if (typeof property !== 'object') {
-        newObj[property] = obj[property];
-      } else if (typeof property === 'object') {
-        let result = copy(obj[property]);
-        if (!result) {
-          return;
-        }
-      }
-    }
-  }
-  return newObj;
-}
-let x = {
-  x: () => {
-    return 1;
-  },
-  y: 2,
-  z: { a: { b: { c: 3 } } },
-};
-let y = copy(x);
+// function copy(obj) {
+//   let newObj = {};
+//   for (let property in obj) {
+//     if (obj.hasOwnProperty(property)) {
+//       if (typeof property !== 'object') {
+//         newObj[property] = obj[property];
+//       } else if (typeof property === 'object') {
+//         let result = copy(obj[property]);
+//         if (!result) {
+//           return;
+//         }
+//       }
+//     }
+//   }
+//   return newObj;
+// }
+// let x = {
+//   x: () => {
+//     return 1;
+//   },
+//   y: 2,
+//   z: { a: { b: { c: 3 } } },
+// };
+// let y = copy(x);
 
-console.log(y);
+// console.log(y);
