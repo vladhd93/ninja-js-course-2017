@@ -160,3 +160,51 @@ console.log(
 // let y = copy(x);
 
 // console.log(y);
+
+
+
+let obj = {
+  "phone_num1bers":[
+    {
+      
+    },
+    {"number":
+     ["Это поле не может быть пустым."]
+    }
+  ],
+    "phone_numbers":[
+    {
+      
+    },
+    {"number":
+     ["Это поле не может быть пустым."]
+    }
+  ],
+  "number_of_candidates": [
+        "A valid integer is required."
+    ]
+};
+
+function renderErrors(obj){
+  let newObj = {};
+  for (let property in obj) {
+    if(obj.hasOwnProperty(property)){
+      if (typeof obj[property] !== 'object') {
+        console.log('here');
+        newObj[property] = obj[property];
+      } else if (typeof property === 'object'){
+        console.log('and here');
+        let result = renderErrors(obj[property]);
+        if(!result){
+          return;
+        }
+      }
+    }
+  }
+  return newObj;
+}
+
+console.log(renderErrors(obj));
+
+
+
